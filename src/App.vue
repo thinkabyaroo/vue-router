@@ -2,9 +2,11 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/contact">Contact</router-link>
+    <router-link :to="{name:'contact'}">Contact</router-link>
+
   </nav>
-  <router-view/>
+  <router-view style="border: 1px solid yellowgreen"/>
+  <h1>this is footer</h1>
 </template>
 
 <style lang="scss">

@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>i am home</h1>
+<!--    <router-link to="/contact">Contact Us</router-link>-->
+
+    <router-link :to="{name:'contact'}">Contact Us</router-link>
+    <router-link :to="{name:'detail',params:{id:123}}">to post 123</router-link>
+    <router-link :to="{name:'detail',params:{id:123},query:{name:'tko'}}">to post 123</router-link>
+
+
+    <!--    <button @click="toContact">Contact</button>-->
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import router from "@/router";
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+  methods: {
+    toContact() {
+      router.push({
+        path:"/contact"
+      })
+    }
+  },
 }
 </script>
+
+<style scoped>
+
+</style>

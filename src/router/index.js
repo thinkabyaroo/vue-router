@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ContactVue from "@/views/ContactVue";
+import PostDetailview from "@/views/PostDetailview";
+import NotFoundView from "@/views/NotFoundView";
 
 const routes = [
   {
@@ -17,14 +19,25 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: "/contact",
+    path: "/contact-us",
+    name: "contact",
     component: ContactVue
+  },
+  {
+    path: "/post-detail/:id",
+    name: "detail",
+    component: PostDetailview
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: NotFoundView
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  linkExactActiveClass:"active"
 })
 
 export default router
