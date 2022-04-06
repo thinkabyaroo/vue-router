@@ -3,7 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import ContactVue from "@/views/ContactVue";
 import PostDetailview from "@/views/PostDetailview";
 import NotFoundView from "@/views/NotFoundView";
-
+import Profile from "@/views/Profile";
+let login=false
 const routes = [
   {
     path: '/',
@@ -27,6 +28,19 @@ const routes = [
     path: "/post-detail/:id",
     name: "detail",
     component: PostDetailview
+  },
+  {
+    path:"/profile",
+    component: Profile,
+    beforeEnter:(to,from,next)=>{
+      // console.log(to,from)
+      // console.log("before enter")
+      if (!login){
+        return next("/");
+      }
+
+      return next();
+    }
   },
   {
     path: '/:pathMatch(.*)*',
